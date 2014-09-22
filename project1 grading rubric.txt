@@ -1,0 +1,5 @@
+Code compilation:                       10 pts (does it compile)
+Code execution:                         20 pts (does it work)
+Algorithm correctness and completeness: 40 pts (does it work correctly)
+Documentation:                          10 pts (in-code comments- functions)
+Quality of design:                      20 pts (program design, proper coding practices)

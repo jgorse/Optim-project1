@@ -8,21 +8,28 @@ vector<int> getGuess(int length);
 
 int main() {
 
-	//get length and range from user
+	//get length and range of secret code from user
 	int n, m;
+
 	cout << "Please enter code length: ";
 	cin >> n;
 	
 	cout << "Please enter digit range: 0-";
 	cin >> m;
+	
+	//digit range is 0-9
 	if (m > 9)
 	{
-		cout << "range must be 9 or less!\n";
+		cout << "Range must be 9 or less!\n";
+		system("pause");
+
 		return 0;
 	}
 
 	//Initialize code with user inputs
 	code code(n, m);
+	
+	//
 	int maxGuess = 3, correctDigits = 0;
 	bool winner = false;
 	
@@ -39,6 +46,7 @@ int main() {
 			winner = true;
 			break;
 		}
+
 		cout << "Your guess was incorrect!\n\n";
 	}
 
@@ -56,7 +64,10 @@ int main() {
 
 vector<int> getGuess(int length)
 {
+	//create new vector for user's guess
 	vector<int> guess(length);
+
+	//prompt user for each element in the guess vector
 	for (int i = 0; i < length; i++)
 	{
 		cout << "guess["<<i<<"] = ";

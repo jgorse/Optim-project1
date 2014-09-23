@@ -41,7 +41,10 @@ int main() {
 		vector<int> guess = getGuess(code.getLength());
 
 		//check user's guess
-		if (code.checkCorrect(guess) == code.getLength())
+		correctDigits = code.checkCorrect(guess);
+		cout << correctDigits << " digits were in the correct location\n";
+
+		if ( correctDigits == code.getLength())
 		{	
 			winner = true;
 			break;

@@ -36,7 +36,7 @@ int main() {
 	code code(n, m);
 	
 	//
-	int maxGuess = 3, correctDigits = 0;
+	int maxGuess = 3, correctDigits = 0, incorrectDigits = 0;
 	bool winner = false;
 	
 	//Allow user to enter up to maxGuess guesses
@@ -48,7 +48,9 @@ int main() {
 
 		//check user's guess
 		correctDigits = code.checkCorrect(guess);
+		incorrectDigits = code.checkIncorrect(guess);
 		cout << correctDigits << " digits were in the correct location\n";
+		cout << incorrectDigits << " digits were in the incorrect location\n";
 
 		if ( correctDigits == code.getLength())
 		{	

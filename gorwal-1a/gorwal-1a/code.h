@@ -15,6 +15,7 @@ public:
 
 	//Check for the number of correct digit matches (same number and position)
 	int checkCorrect(const vector<int> &guess);
+	int code::checkIncorrect(const vector<int> &guess);
 
 	//Return length of secret code
 	int getLength();

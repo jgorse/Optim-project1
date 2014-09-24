@@ -46,6 +46,36 @@ int code::checkCorrect(const vector<int> &guess){
 	return numCorrect;
 }
 
+int code::checkIncorrect(const vector<int> &guess){
+	int numIncorrect = 0;
+	vector<int> alreadyChecked;
+	alreadyChecked.resize(guess.size());
+	bool flag = true;
+
+	for (int i = 0; i < code_length; i++)
+	{
+		for (int j = 0; j < code_length; j++)
+		{
+			/*for (int k = 0; k < alreadyChecked.size(); k++)
+			{
+				if (secret[j] == alreadyChecked[k])
+					flag = false;
+			}*/
+			if (i == j){
+				if (secret[j] == guess[i])
+					break;
+			}
+			if (secret[j] == guess[i] && i != j && flag != false)
+			{
+				//alreadyChecked.push_back(secret[j]);
+				numIncorrect++;
+				break;
+			}
+		}
+	}
+	return numIncorrect;
+}
+
 int code::getLength()
 {
 	return code_length;

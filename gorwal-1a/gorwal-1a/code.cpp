@@ -2,9 +2,11 @@
 #include <vector>
 #include "d_random.h"
 #include "code.h"
+#include <string>
 
 using namespace std;
 
+//Initialize with a length and range
 code::code(int n, int m){
 	
 	code_length = n;
@@ -24,6 +26,7 @@ code::code(int n, int m){
 	
 	//print for debug
 	cout << "\nReal answer: ";
+	
 	for (int i = 0; i < code_length; i++)
 	{
 		cout << secret[i];
@@ -32,6 +35,7 @@ code::code(int n, int m){
 
 }//end constructor
 
+//Check for the number of correct digit matches (same number and position)
 int code::checkCorrect(const vector<int> &guess){
 	
 	int numCorrect = 0;
@@ -46,22 +50,25 @@ int code::checkCorrect(const vector<int> &guess){
 	return numCorrect;
 }
 
+//Check for number of cases of right digit in wrong location
 int code::checkIncorrect(const vector<int> &guess){
+	
 	int numIncorrect = 0;
-	vector<int> alreadyChecked;
+	/*vector<int> alreadyChecked;
 	alreadyChecked.resize(guess.size());
 	bool flag = true;
-
-	for (int i = 0; i < code_length; i++)
+	
+	for (int i = 0; i < code_length; i)
 	{
-		for (int j = 0; j < code_length; j++)
+		for (int j = 0; j < code_length; j)
 		{
-			/*for (int k = 0; k < alreadyChecked.size(); k++)
+			if (i == j)
 			{
-				if (secret[j] == alreadyChecked[k])
+				/*for (int k = 0; k < alreadyChecked.size(); k)
+				{
+					if (secret[j] == alreadyChecked[k])
 					flag = false;
-			}*/
-			if (i == j){
+				}*
 				if (secret[j] == guess[i])
 					break;
 			}
@@ -72,10 +79,12 @@ int code::checkIncorrect(const vector<int> &guess){
 				break;
 			}
 		}
-	}
+	}*/
+	
 	return numIncorrect;
 }
 
+//Return length of secret code
 int code::getLength()
 {
 	return code_length;

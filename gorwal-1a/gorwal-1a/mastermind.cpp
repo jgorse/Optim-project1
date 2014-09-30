@@ -45,13 +45,19 @@ istream& operator >> (istream& is, vector<int>& c)
 //constructor passing user-given data to 'code' constructor
 mastermind::mastermind(int n, int m):secret(n, m)
 {
-
+	maxGuess = 3;
+	correctDigits = 0;
+	incorrectDigits = 0;
+	winner = false;
 }
 
 //constructor passing default data to 'code' constructor
 mastermind::mastermind(): secret(5, 5)
 {
-
+	maxGuess = 3;
+	correctDigits = 0;
+	incorrectDigits = 0;
+	winner = false;
 }
 
 //main gameplay function

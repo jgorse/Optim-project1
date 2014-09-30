@@ -26,9 +26,9 @@ private:
 	//private data
 	code secret;
 	vector<int>userGuess;
-	int maxGuess = 3;
-	int correctDigits = 0, incorrectDigits = 0;
-	bool winner = false;
+	int maxGuess;
+	int correctDigits, incorrectDigits;
+	bool winner;
 
 };
 

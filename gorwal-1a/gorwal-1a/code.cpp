@@ -55,13 +55,18 @@ int code::checkIncorrect(const vector<int> &guess){
 	
 	int numIncorrect = 0;
 	vector<bool> secretChecked, guessChecked;
+
+	//vectors to mark which indecies in guess and secret have already been matched
 	secretChecked.resize(guess.size());
 	guessChecked.resize(guess.size());
+
+	//Initialize to none checked
 	for (int i = 0; i < secretChecked.size(); i++)
 	{
 		secretChecked[i] = guessChecked[i] = false;
 	}
 
+	//exact matches are not included in numIncorrect, so mark them as already checked
 	for (int k = 0; k < code_length; k++)
 	{
 		if (secret[k] == guess[k])
@@ -71,11 +76,15 @@ int code::checkIncorrect(const vector<int> &guess){
 		}
 	}
 
-	for (int i = 0; i < code_length; i++)
+	
+	for (int i = 0; i < code_length; i++)//traverse through secret with i
 	{
-		for (int j = 0; j < code_length; j++)
+		for (int j = 0; j < code_length; j++)//traverse through guess with j
 		{
-			if ((secret[i] == guess[j]) && (secretChecked[i] == false) && (guessChecked[j] == false) && (i != j) )
+			//if the indices are different but the numbers match, 
+			//and neither index has been matched before, its a numIncorrect
+			if ((secret[i] == guess[j]) && (secretChecked[i] == false) && 
+				(guessChecked[j] == false) && (i != j) )
 			{
 				numIncorrect++;
 				secretChecked[i] = guessChecked[j] = true;

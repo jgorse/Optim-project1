@@ -54,32 +54,35 @@ int code::checkCorrect(const vector<int> &guess){
 int code::checkIncorrect(const vector<int> &guess){
 	
 	int numIncorrect = 0;
-	/*vector<int> alreadyChecked;
-	alreadyChecked.resize(guess.size());
-	bool flag = true;
-	
-	for (int i = 0; i < code_length; i)
+	vector<bool> secretChecked, guessChecked;
+	secretChecked.resize(guess.size());
+	guessChecked.resize(guess.size());
+	for (int i = 0; i < secretChecked.size(); i++)
 	{
-		for (int j = 0; j < code_length; j)
+		secretChecked[i] = guessChecked[i] = false;
+	}
+
+	for (int k = 0; k < code_length; k++)
+	{
+		if (secret[k] == guess[k])
 		{
-			if (i == j)
+			guessChecked[k] = true;
+			secretChecked[k] = true;
+		}
+	}
+
+	for (int i = 0; i < code_length; i++)
+	{
+		for (int j = 0; j < code_length; j++)
+		{
+			if ((secret[i] == guess[j]) && (secretChecked[i] == false) && (guessChecked[j] == false) && (i != j) )
 			{
-				/*for (int k = 0; k < alreadyChecked.size(); k)
-				{
-					if (secret[j] == alreadyChecked[k])
-					flag = false;
-				}*
-				if (secret[j] == guess[i])
-					break;
-			}
-			if (secret[j] == guess[i] && i != j && flag != false)
-			{
-				//alreadyChecked.push_back(secret[j]);
 				numIncorrect++;
+				secretChecked[i] = guessChecked[j] = true;
 				break;
 			}
 		}
-	}*/
+	}
 	
 	return numIncorrect;
 }
